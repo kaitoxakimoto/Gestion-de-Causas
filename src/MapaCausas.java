@@ -1,6 +1,5 @@
 import java.util.*;
 
-
 public class MapaCausas {
     // Atrubutos
     private HashMap<String, Causa> mapaCausas;
@@ -25,7 +24,7 @@ public class MapaCausas {
 
     public void mostrarCausas() {
 
-        for (Map.Entry<String,Causa> set : mapaCausas.entrySet()) {
+        for (Map.Entry<String, Causa> set : mapaCausas.entrySet()) {
             System.out.println("RIT:" + set.getKey() + " razon:" + set.getValue().getTipoCausa());
         }
         return;
@@ -65,8 +64,8 @@ public class MapaCausas {
         String nombreT = "";
         while (!nombreT.equals("x")) {
             System.out.println("Lista de testigos actuales: ");
-            for(int i = 0; i< testigosDemandante.size();i++){
-                System.out.println(testigosDemandante.get(i).getRut() + " " + testigosDemandante.get(i).getNombre() );
+            for (int i = 0; i < testigosDemandante.size(); i++) {
+                System.out.println(testigosDemandante.get(i).getRut() + " " + testigosDemandante.get(i).getNombre());
             }
 
             System.out.println("Ingrese nombre de testigo del demandante (Ingrese x para terminar de agregar): ");
@@ -93,8 +92,8 @@ public class MapaCausas {
         String nombre = "";
         while (!nombre.equals("x")) {
             System.out.println("Lista de abogados actuales: ");
-            for(int i = 0; i< abogados.size();i++){
-                System.out.println(abogados.get(i).getRut() + " " + abogados.get(i).getNombre() );
+            for (int i = 0; i < abogados.size(); i++) {
+                System.out.println(abogados.get(i).getRut() + " " + abogados.get(i).getNombre());
             }
 
             System.out.println("Ingrese nombre abogado del demandante (Ingrese x para terminar de agregar): ");
@@ -136,8 +135,8 @@ public class MapaCausas {
         nombreT = "";
         while (!nombreT.equals("x")) {
             System.out.println("Esta es la lista de testigos actuales: ");
-            for(int i = 0; i< testigosDemandado.size();i++){
-                System.out.println(testigosDemandado.get(i).getRut() + " " + testigosDemandado.get(i).getNombre() );
+            for (int i = 0; i < testigosDemandado.size(); i++) {
+                System.out.println(testigosDemandado.get(i).getRut() + " " + testigosDemandado.get(i).getNombre());
             }
 
             System.out.println("Ingrese nombre de testigo del demandado (Ingrese x para terminar de agregar): ");
@@ -164,8 +163,8 @@ public class MapaCausas {
         nombre = "";
         while (!nombre.equals("x")) {
             System.out.println("Esta es la lista de abogados actuales: ");
-            for(int i = 0; i< abogadosDemandado.size();i++){
-                System.out.println(abogadosDemandado.get(i).getRut() + " " + abogadosDemandado.get(i).getNombre() );
+            for (int i = 0; i < abogadosDemandado.size(); i++) {
+                System.out.println(abogadosDemandado.get(i).getRut() + " " + abogadosDemandado.get(i).getNombre());
             }
 
             System.out.println("Ingrese nombre abogado del demandante (Ingrese x para terminar de agregar): ");
@@ -195,7 +194,7 @@ public class MapaCausas {
         gestionDeCausas.pause();
     }
 
-    public void editarCausa(String ritAEditar){
+    public void editarCausa(String ritAEditar) {
         Scanner scannerInt = new Scanner(System.in);
         Scanner scannerString = new Scanner(System.in);
         String opcionString;
@@ -203,7 +202,6 @@ public class MapaCausas {
         gestionDeCausas.clearScreen();
 
         Causa causaAEditar = mapaCausas.get(ritAEditar);
-
 
         System.out.println("Editando la causa RIT: " + causaAEditar.getRit());
         System.out.println("De esta causa usted podria editar: ");
@@ -214,7 +212,7 @@ public class MapaCausas {
 
         opcionInt = scannerInt.nextInt();
 
-        switch (opcionInt){
+        switch (opcionInt) {
             case 1:
                 causaAEditar.getDefensor().editarGUI();
                 break;
@@ -223,7 +221,7 @@ public class MapaCausas {
                 break;
             case 3:
                 gestionDeCausas.clearScreen();
-                System.out.println("el RIT actual es "+ causaAEditar.getRit());
+                System.out.println("el RIT actual es " + causaAEditar.getRit());
                 System.out.println("el nuevo RIT debe ser: ");
                 opcionString = scannerString.nextLine();
 
@@ -234,7 +232,7 @@ public class MapaCausas {
                 break;
             case 4:
                 gestionDeCausas.clearScreen();
-                System.out.println("el tipo actual es "+ causaAEditar.getTipoCausa());
+                System.out.println("el tipo actual es " + causaAEditar.getTipoCausa());
                 System.out.println("el nuevo tipo debe ser: ");
                 opcionString = scannerString.nextLine();
                 causaAEditar.setTipoCausa(opcionString);
@@ -243,12 +241,12 @@ public class MapaCausas {
 
     }
 
-    public void eliminarCausa(String ritAEliminar){
+    public void eliminarCausa(String ritAEliminar) {
         mapaCausas.remove(ritAEliminar);
         return;
     }
 
-    public void mostrarCausa(String ritAMostrar){
+    public void mostrarCausa(String ritAMostrar) {
         mapaCausas.get(ritAMostrar).mostrarCausa();
         return;
     }

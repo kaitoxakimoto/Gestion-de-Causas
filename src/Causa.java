@@ -1,22 +1,22 @@
 public class Causa {
-    //Atributos
+    // Atributos
     private ParteAcusadora acusador;
     private ParteDefensora defensor;
     private String tipoCausa;
     private String rit;
-    
-    //Constructor
-    public Causa(ParteAcusadora acusador, ParteDefensora defensor, String tipoCausa, String rit){
+
+    // Constructor
+    public Causa(ParteAcusadora acusador, ParteDefensora defensor, String tipoCausa, String rit) {
         this.acusador = acusador;
         this.defensor = defensor;
         this.tipoCausa = tipoCausa;
         this.rit = rit;
     }
 
-    public Causa(){
+    public Causa() {
     }
-    
-    //Getter y Setter
+
+    // Getter y Setter
     public ParteAcusadora getAcusador() {
         return acusador;
     }
@@ -49,7 +49,7 @@ public class Causa {
         this.rit = rit;
     }
 
-    public void mostrarCausa(){
+    public void mostrarCausa() {
         gestionDeCausas.clearScreen();
         System.out.println("La causa tiene RIT: " + rit);
         System.out.println("El tipo de la causa es: " + tipoCausa);
@@ -61,5 +61,5 @@ public class Causa {
         acusador.mostrarDatos();
         return;
     }
-    
+
 }

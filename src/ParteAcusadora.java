@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 import java.util.*;
 
-public class ParteAcusadora implements abogadoManejable {  
-    
+public class ParteAcusadora implements abogadoManejable {
+
     // Atributos
     private ArrayList<Abogado> acusador;
     private Cliente demandante;
@@ -133,7 +133,7 @@ public class ParteAcusadora implements abogadoManejable {
                 System.out.println("Nombre: " + demandante.getNombre() + " RUT: " + demandante.getRut());
                 System.out.println("Usted desea:");
                 System.out.println("1) Cambiar el nombre");
-                System.out.println("2) Cambiar el RUT");  
+                System.out.println("2) Cambiar el RUT");
                 opcionInt2 = scannerInt.nextInt();
                 switch (opcionInt2) {
                     case 1:
@@ -179,7 +179,7 @@ public class ParteAcusadora implements abogadoManejable {
         }
     }
 
-    public void mostrarDatos(){
+    public void mostrarDatos() {
         System.out.println("La persona demandante es");
         System.out.print("\t");
         demandante.identificarse();

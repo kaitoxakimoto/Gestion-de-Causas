@@ -38,19 +38,19 @@ public class ParteDefensora implements abogadoManejable {
     // Metodos
 
     public void anadirAbogado(String nombre, String rut, String especialidad) {
-        Abogado abogadoAux = new Abogado(nombre, rut,especialidad);
-        for(int i = 0 ; i < defensor.size() ; i++){
-            if(defensor.get(i).getRut() == rut ){
+        Abogado abogadoAux = new Abogado(nombre, rut, especialidad);
+        for (int i = 0; i < defensor.size(); i++) {
+            if (defensor.get(i).getRut() == rut) {
                 System.out.println("El abogado ya se encuentra en la lista");
                 return;
             }
         }
         defensor.add(abogadoAux);
     }
-    
-    public void eliminarAbogado(String rut){
-        for(int i = 0; i< defensor.size() ; i++){
-            if(defensor.get(i).getRut().equals(rut)){
+
+    public void eliminarAbogado(String rut) {
+        for (int i = 0; i < defensor.size(); i++) {
+            if (defensor.get(i).getRut().equals(rut)) {
                 defensor.remove(i);
                 System.out.println("El Abogado fue eliminado exitosamente.");
                 return;
@@ -60,11 +60,11 @@ public class ParteDefensora implements abogadoManejable {
         return;
     }
 
-    public void editarAbogado(String rut, String nuevoRut, String nuevoNombre, String nuevaEspecialidad){
-        Abogado abogadoAux = new Abogado(nuevoNombre,nuevoRut,nuevaEspecialidad);
-        for(int i = 0 ; i < defensor.size() ; i++){
-            if(defensor.get(i).getRut() == rut){
-                defensor.set(i,abogadoAux);
+    public void editarAbogado(String rut, String nuevoRut, String nuevoNombre, String nuevaEspecialidad) {
+        Abogado abogadoAux = new Abogado(nuevoNombre, nuevoRut, nuevaEspecialidad);
+        for (int i = 0; i < defensor.size(); i++) {
+            if (defensor.get(i).getRut() == rut) {
+                defensor.set(i, abogadoAux);
                 System.out.println("El Abogado fue editado exitosamente.");
             }
         }
@@ -72,15 +72,14 @@ public class ParteDefensora implements abogadoManejable {
         return;
     }
 
-    public void mostrarAbogados(){
+    public void mostrarAbogados() {
         System.out.println("Los Abogados defensores son:");
-        for (int i = 0 ; i < defensor.size(); i++){
+        for (int i = 0; i < defensor.size(); i++) {
             defensor.get(i).identificarse();
         }
         return;
 
     }
-
 
     public void editarGUI() {
         Scanner scannerInt = new Scanner(System.in);
@@ -134,7 +133,7 @@ public class ParteDefensora implements abogadoManejable {
                 System.out.println("Nombre: " + demandado.getNombre() + " RUT: " + demandado.getRut());
                 System.out.println("Usted desea:");
                 System.out.println("1) Cambiar el nombre");
-                System.out.println("2) Cambiar el RUT");  
+                System.out.println("2) Cambiar el RUT");
                 opcionInt2 = scannerInt.nextInt();
                 switch (opcionInt2) {
                     case 1:
@@ -179,11 +178,11 @@ public class ParteDefensora implements abogadoManejable {
         }
     }
 
-    public void mostrarDatos(){
+    public void mostrarDatos() {
         System.out.println("La persona demandandada es");
         System.out.print("\t");
         demandado.identificarse();
-        
+
         System.out.println("El buffet de abogados es el siguente");
         mostrarAbogados();
 

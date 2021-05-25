@@ -1,10 +1,9 @@
 import java.util.*;
 
-public class Cliente extends Persona{
-    
+public class Cliente extends Persona {
+
     private ArrayList<Testigo> testigos;
-    
-    
+
     // Constructor
     public Cliente(String nombre, String rut, ArrayList<Testigo> testigos) {
         super(nombre, rut);
@@ -59,21 +58,21 @@ public class Cliente extends Persona{
         System.out.println("Rut de testigo a editar no encontrado.");
     }
 
-    public void mostrarTestigos(){
+    public void mostrarTestigos() {
         for (int i = 0; i < testigos.size(); i++) {
             System.out.println(testigos.get(i).getNombre() + " / Rut: " + testigos.get(i).getRut());
         }
     }
-    
+
     @Override // SobreCarga del método en clase Persona
-    public void identificarse(){
-        
+    public void identificarse() {
+
         System.out.println(getNombre() + " / Rut: " + getRut());
         System.out.println("Tiene los siguientes testigos: ");
         for (int i = 0; i < testigos.size(); i++) {
             testigos.get(i).mostrarDatos();
         }
-        
+
     }
-       
+
 }

@@ -29,6 +29,6 @@ public abstract class Persona {
     }
 
     // Metodos
-    
+
     public abstract void identificarse();
 }

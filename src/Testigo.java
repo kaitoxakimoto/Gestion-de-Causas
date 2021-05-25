@@ -27,7 +27,7 @@ public class Testigo {
         this.rut = rut;
     }
 
-    public void mostrarDatos(){
+    public void mostrarDatos() {
         System.out.println("\t" + nombre + " / Rut: " + rut);
     }
 }

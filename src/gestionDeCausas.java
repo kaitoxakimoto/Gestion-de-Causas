@@ -3,6 +3,7 @@ import java.util.Iterator;
 
 public class gestionDeCausas {
     private static MapaCausas mapaCausas = new MapaCausas();
+
     public static void main(String[] args) {
         // Ataque
         Testigo testigoAta = new Testigo("Fulanita", "19343935-8");
@@ -83,7 +84,7 @@ public class gestionDeCausas {
                 opcionString = scannerString.nextLine();
                 mapaCausas.eliminarCausa(opcionString);
                 break;
-            
+
             case 4:
                 clearScreen();
                 System.out.println("Las causas actuales son");
@@ -96,16 +97,15 @@ public class gestionDeCausas {
             case 5:
                 clearScreen();
                 System.out.println("Seleccione una de las especialidades para buscar abogados:");
-                
+
                 opcionString = scannerString.nextLine();
-                EspecialidadAbogados(mapaCausas,opcionString);
+                EspecialidadAbogados(mapaCausas, opcionString);
                 break;
             case 6:
                 clearScreen();
                 AbogadoConMasCausas(mapaCausas);
                 break;
-                
-                
+
             case 0:
                 return;
         }
@@ -113,108 +113,105 @@ public class gestionDeCausas {
         principal();
     }
 
-    //Metodos
+    // Metodos
 
-    public static void EspecialidadAbogados(MapaCausas mapaCausa, String especialidadBuscada){
-        Iterator<Map.Entry<String,Causa>> iterador = mapaCausa.getMapaCausas().entrySet().iterator();
+    public static void EspecialidadAbogados(MapaCausas mapaCausa, String especialidadBuscada) {
+        Iterator<Map.Entry<String, Causa>> iterador = mapaCausa.getMapaCausas().entrySet().iterator();
         ArrayList<String> AbogadosBuscados = new ArrayList<String>();
-        while(iterador.hasNext()){
-            Map.Entry<String,Causa> aux = (Map.Entry<String,Causa>)iterador.next();
-            //Abogados Parte Acusadora
-            for(int i = 0; i < aux.getValue().getAcusador().getAcusador().size();i++){
-                if(aux.getValue().getAcusador().getAcusador().get(i).getEspecialidad().equals(especialidadBuscada)){
-                    if(!AbogadosBuscados.contains(aux.getValue().getAcusador().getAcusador().get(i).getNombre())){
+        while (iterador.hasNext()) {
+            Map.Entry<String, Causa> aux = (Map.Entry<String, Causa>) iterador.next();
+            // Abogados Parte Acusadora
+            for (int i = 0; i < aux.getValue().getAcusador().getAcusador().size(); i++) {
+                if (aux.getValue().getAcusador().getAcusador().get(i).getEspecialidad().equals(especialidadBuscada)) {
+                    if (!AbogadosBuscados.contains(aux.getValue().getAcusador().getAcusador().get(i).getNombre())) {
                         AbogadosBuscados.add(aux.getValue().getAcusador().getAcusador().get(i).getNombre());
                     }
                 }
             }
-            //Abogados Parte Defensora
-            for(int i = 0; i < aux.getValue().getDefensor().getDefensor().size();i++){
-                if(aux.getValue().getDefensor().getDefensor().get(i).getEspecialidad().equals(especialidadBuscada)){
-                    if(!AbogadosBuscados.contains(aux.getValue().getDefensor().getDefensor().get(i).getNombre())){
+            // Abogados Parte Defensora
+            for (int i = 0; i < aux.getValue().getDefensor().getDefensor().size(); i++) {
+                if (aux.getValue().getDefensor().getDefensor().get(i).getEspecialidad().equals(especialidadBuscada)) {
+                    if (!AbogadosBuscados.contains(aux.getValue().getDefensor().getDefensor().get(i).getNombre())) {
                         AbogadosBuscados.add(aux.getValue().getDefensor().getDefensor().get(i).getNombre());
                     }
                 }
             }
-            //Mostrar en pantalla datos conseguidos
+            // Mostrar en pantalla datos conseguidos
             System.out.println("Los abogados de especialidad " + especialidadBuscada + " son:");
-            for (int i = 0; i < AbogadosBuscados.size();i++ ){
+            for (int i = 0; i < AbogadosBuscados.size(); i++) {
                 System.out.println(AbogadosBuscados.get(i));
 
             }
         }
     }
 
-    public static void AbogadoConMasCausas(MapaCausas mapaCausa){
-        Iterator<Map.Entry<String,Causa>> iterador = mapaCausa.getMapaCausas().entrySet().iterator();
+    public static void AbogadoConMasCausas(MapaCausas mapaCausa) {
+        Iterator<Map.Entry<String, Causa>> iterador = mapaCausa.getMapaCausas().entrySet().iterator();
         ArrayList<String> Abogados = new ArrayList<String>();
         String abogadoMasCausas = "";
-        int contador = 0 ;
+        int contador = 0;
         int maxContador = 0;
-        while(iterador.hasNext()){
-            Map.Entry<String,Causa> aux = (Map.Entry<String,Causa>)iterador.next();
-            //Abogados Parte Acusadora
-            for(int i = 0; i < aux.getValue().getAcusador().getAcusador().size();i++){
-                if(!Abogados.contains(aux.getValue().getAcusador().getAcusador().get(i).getNombre())){
+        while (iterador.hasNext()) {
+            Map.Entry<String, Causa> aux = (Map.Entry<String, Causa>) iterador.next();
+            // Abogados Parte Acusadora
+            for (int i = 0; i < aux.getValue().getAcusador().getAcusador().size(); i++) {
+                if (!Abogados.contains(aux.getValue().getAcusador().getAcusador().get(i).getNombre())) {
                     Abogados.add(aux.getValue().getAcusador().getAcusador().get(i).getNombre());
                 }
             }
-            //Abogados Parte Defensora
-            for(int i = 0; i < aux.getValue().getDefensor().getDefensor().size();i++){
-                if(!Abogados.contains(aux.getValue().getDefensor().getDefensor().get(i).getNombre())){
+            // Abogados Parte Defensora
+            for (int i = 0; i < aux.getValue().getDefensor().getDefensor().size(); i++) {
+                if (!Abogados.contains(aux.getValue().getDefensor().getDefensor().get(i).getNombre())) {
                     Abogados.add(aux.getValue().getDefensor().getDefensor().get(i).getNombre());
                 }
             }
-                
+
         }
-        for(int j = 0; j < Abogados.size();j++){
+        for (int j = 0; j < Abogados.size(); j++) {
             contador = 0;
             iterador = mapaCausa.getMapaCausas().entrySet().iterator();
-            while(iterador.hasNext()){
-                Map.Entry<String,Causa> aux = (Map.Entry<String,Causa>)iterador.next();
-                //Parte Acusadora
-                for(int i = 0; i < aux.getValue().getAcusador().getAcusador().size();i++){
-                    if(aux.getValue().getAcusador().getAcusador().get(i).getNombre().equals(Abogados.get(j))){
+            while (iterador.hasNext()) {
+                Map.Entry<String, Causa> aux = (Map.Entry<String, Causa>) iterador.next();
+                // Parte Acusadora
+                for (int i = 0; i < aux.getValue().getAcusador().getAcusador().size(); i++) {
+                    if (aux.getValue().getAcusador().getAcusador().get(i).getNombre().equals(Abogados.get(j))) {
                         contador++;
                     }
                 }
-                //Parte Defensora
-                for(int i = 0; i < aux.getValue().getDefensor().getDefensor().size();i++ ){
-                    if(aux.getValue().getDefensor().getDefensor().get(i).getNombre().equals(Abogados.get(j))){
+                // Parte Defensora
+                for (int i = 0; i < aux.getValue().getDefensor().getDefensor().size(); i++) {
+                    if (aux.getValue().getDefensor().getDefensor().get(i).getNombre().equals(Abogados.get(j))) {
                         contador++;
                     }
                 }
-                    
+
             }
-            if(contador > maxContador){
+            if (contador > maxContador) {
                 maxContador = contador;
                 abogadoMasCausas = Abogados.get(j);
             }
 
-            System.out.println("El abogado con mas Causas es: "+ abogadoMasCausas);
+            System.out.println("El abogado con mas Causas es: " + abogadoMasCausas);
             System.out.println("Con un total de: " + (maxContador) + " causas.");
             return;
         }
 
-            
     }
 
-    //Utilidades
+    // Utilidades
 
     public static void clearScreen() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
 
-    public static void pause()
-    { 
-           System.out.println("Presione una tecla para continuar...");
-           try{
-               System.in.read();
-           }  
-           catch(Exception e){
+    public static void pause() {
+        System.out.println("Presione una tecla para continuar...");
+        try {
+            System.in.read();
+        } catch (Exception e) {
 
-           } 
+        }
     }
 
 }
